@@ -3,6 +3,7 @@ package hydrozoa.multisig.consensus
 import cats.effect.IO
 import cats.syntax.all.*
 import hydrozoa.config.head.initialization.InitializationParameters.HeadId
+import hydrozoa.config.head.multisig.timing.TxTiming.RequestTimes.{RequestValidityEndTime, RequestValidityStartTime}
 import hydrozoa.lib.actor.SyncRequest
 import hydrozoa.multisig.consensus.UserRequestBody.{DepositRequestBody, TransactionRequestBody}
 import hydrozoa.multisig.ledger.event.RequestId
@@ -51,7 +52,7 @@ object UserRequest {
             header: UserRequestHeader,
             body: DepositRequestBody,
             userVk: VerificationKey
-        ): UserRequest = new UserRequest.DepositRequest(header, body, userVk)
+        ): DepositRequest = new UserRequest.DepositRequest(header, body, userVk)
     }
 
     object TransactionRequest {
@@ -59,24 +60,12 @@ object UserRequest {
             header: UserRequestHeader,
             body: TransactionRequestBody,
             userVk: VerificationKey
-        ): UserRequest = new UserRequest.TransactionRequest(header, body, userVk)
+        ): TransactionRequest = new UserRequest.TransactionRequest(header, body, userVk)
     }
 
     type Sync = SyncRequest.Envelope[IO, UserRequest, RequestId]
 
 }
-
-opaque type RequestValidityStartTimeRaw = Long
-
-object RequestValidityStartTimeRaw:
-    def apply(bi: Long): RequestValidityStartTimeRaw = bi
-    extension (self: RequestValidityStartTimeRaw) def toLong: Long = self
-
-opaque type RequestValidityEndTimeRaw = Long
-
-object RequestValidityEndTimeRaw:
-    def apply(bi: Long): RequestValidityEndTimeRaw = bi
-    extension (self: RequestValidityEndTimeRaw) def toLong: Long = self
 
 /** @param headId
   *   The blake2b_224 hash of the cbor-encoded seed utxo [[TransactionInput]] appended to the CIP-67
@@ -92,8 +81,8 @@ object RequestValidityEndTimeRaw:
   */
 case class UserRequestHeader(
     headId: HeadId,
-    validityStart: RequestValidityStartTimeRaw,
-    validityEnd: RequestValidityEndTimeRaw,
+    validityStart: RequestValidityStartTime,
+    validityEnd: RequestValidityEndTime,
     bodyHash: Hash32
 ) {
     def signEd25519(privateKey: ByteString): Signature =
