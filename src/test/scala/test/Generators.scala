@@ -3,7 +3,7 @@ package test
 import cats.data.{NonEmptyList, NonEmptyVector}
 import cats.syntax.all.toTraverseOps
 import cats.{Hash as _, *}
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import hydrozoa.config.head.peers.HeadPeers
 import hydrozoa.lib.cardano.value.coin.Distribution
 import hydrozoa.lib.cardano.value.coin.Distribution.NormalizedWeights

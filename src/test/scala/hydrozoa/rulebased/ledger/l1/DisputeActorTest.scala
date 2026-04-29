@@ -5,6 +5,7 @@ import cats.effect.*
 import cats.effect.unsafe.implicits.global
 import hydrozoa.*
 import hydrozoa.config.*
+import hydrozoa.lib.cardano.blueprint.HydrozoaBlueprint
 import hydrozoa.config.node.MultiNodeConfig
 import hydrozoa.lib.cardano.scalus.QuantizedTime.QuantizedInstant.realTimeQuantizedInstant
 import hydrozoa.lib.cardano.scalus.VerificationKeyExtra.{addrKeyHash, pubKeyHash}

@@ -3,7 +3,7 @@ package hydrozoa.rulebased.ledger.l1.tx
 import cats.syntax.all.*
 import hydrozoa.*
 import hydrozoa.config.ScriptReferenceUtxos
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import hydrozoa.config.head.peers.HeadPeers
 import hydrozoa.config.node.operation.evacuation.NodeOperationEvacuationConfig
 import hydrozoa.lib.cardano.scalus.VerificationKeyExtra.shelleyAddress

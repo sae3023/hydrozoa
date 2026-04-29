@@ -1,0 +1,30 @@
+package hydrozoa.lib.cardano.scalus.cardano.onchain.plutus
+
+import io.bullet.borer.Encoder
+import scalus.*
+import scalus.cardano.ledger.TransactionOutput
+import scalus.cardano.onchain.plutus.v2.OutputDatum.OutputDatum
+import scalus.cardano.onchain.plutus.v3.TxOut
+import scalus.uplc.builtin.{Data, FromData}
+
+@Compile
+object TxOutExtension {
+    extension (self: TxOut)
+        /** Returns inline datum of type T of fails.
+          *
+          * @param x$1
+          * @tparam T
+          * @return
+          */
+        def inlineDatumOfType[T](using FromData[T]): T =
+            val OutputDatum(inlineDatum) = self.datum: @unchecked
+            inlineDatum.to[T]
+}
+
+object TransactionOutputEncoders {
+    given Encoder[TransactionOutput.Shelley] =
+        summon[Encoder[TransactionOutput]].asInstanceOf[Encoder[TransactionOutput.Shelley]]
+
+    given Encoder[TransactionOutput.Babbage] =
+        summon[Encoder[TransactionOutput]].asInstanceOf[Encoder[TransactionOutput.Babbage]]
+}

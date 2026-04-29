@@ -3,7 +3,7 @@ package hydrozoa.multisig.ledger.l1.txseq
 import cats.data.{Kleisli, NonEmptyVector}
 import cats.syntax.all.*
 import hydrozoa.config.head.initialization.{InitialBlock, InitializationParameters}
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import hydrozoa.config.head.peers.HeadPeers
 import hydrozoa.multisig.ledger.joint.obligation.Payout
 import hydrozoa.multisig.ledger.l1.tx.RolloutTx

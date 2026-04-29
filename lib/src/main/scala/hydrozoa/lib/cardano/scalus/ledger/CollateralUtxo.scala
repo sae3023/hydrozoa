@@ -1,6 +1,6 @@
 package hydrozoa.lib.cardano.scalus.ledger
 
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import scalus.cardano.address.ShelleyPaymentPart.Key
 import scalus.cardano.address.{ShelleyAddress, ShelleyDelegationPart}
 import scalus.cardano.ledger.*

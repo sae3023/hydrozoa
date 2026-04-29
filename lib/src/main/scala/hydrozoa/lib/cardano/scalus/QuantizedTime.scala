@@ -2,7 +2,7 @@ package hydrozoa.lib.cardano.scalus
 
 import cats.effect.*
 import cats.effect.IO.*
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import io.circe.*
 import io.circe.syntax.*
 import java.time.Instant

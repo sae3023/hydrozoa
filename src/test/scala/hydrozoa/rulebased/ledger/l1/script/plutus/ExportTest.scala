@@ -1,6 +1,6 @@
 package hydrozoa.rulebased.ledger.l1.script.plutus
 
-import hydrozoa.config.HydrozoaBlueprint
+import hydrozoa.lib.cardano.blueprint.HydrozoaBlueprint
 import java.io.File
 import java.nio.file.Files
 import org.scalatest.funsuite.AnyFunSuite

@@ -2,7 +2,7 @@ package hydrozoa.multisig.ledger.l1.tx
 
 import cats.*
 import cats.data.*
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import hydrozoa.config.node.MultiNodeConfig
 import hydrozoa.multisig.consensus.peer.HeadPeerNumber
 import hydrozoa.multisig.ledger.l1.utxo.RolloutUtxo

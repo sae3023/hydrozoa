@@ -6,8 +6,8 @@ import com.bloxbean.cardano.client.account.Account
 import com.bloxbean.cardano.client.common.model.Network as BloxbeanNetwork
 import com.bloxbean.cardano.client.crypto.cip1852.DerivationPath.createExternalAddressDerivationPathForAccount
 import hydrozoa.*
-import hydrozoa.config.head.network.CardanoNetwork
-import hydrozoa.config.head.network.CardanoNetworkGen.given_Arbitrary_CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetworkGen.given_Arbitrary_CardanoNetwork
 import hydrozoa.config.head.peers.HeadPeers.*
 import hydrozoa.config.head.peers.{HeadPeerData, HeadPeers}
 import hydrozoa.lib.cardano.scalus.VerificationKeyExtra.shelleyAddress

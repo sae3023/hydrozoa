@@ -1,6 +1,6 @@
 package hydrozoa.lib.cardano.scalus.contextualscalus
 
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import scalus.cardano.ledger.rules.STS.Validator
 import scalus.cardano.ledger.{EvaluatorMode, PlutusScriptEvaluator}
 import scalus.cardano.txbuilder as scalusTx

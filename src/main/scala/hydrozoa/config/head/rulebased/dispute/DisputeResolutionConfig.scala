@@ -1,6 +1,6 @@
 package hydrozoa.config.head.rulebased.dispute
 
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import hydrozoa.lib.cardano.scalus.QuantizedTime.QuantizedFiniteDuration
 import io.circe.*
 import io.circe.generic.semiauto.*

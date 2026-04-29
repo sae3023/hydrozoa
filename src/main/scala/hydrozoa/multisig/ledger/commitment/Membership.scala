@@ -6,7 +6,8 @@ import scala.util.Try
 import scalus.uplc.builtin.bls12_381.G2Element
 import supranational.blst.P2
 
-import KzgCommitment.{KzgCommitment, asG1Element, asScalusScalar}
+import KzgCommitment.{KzgCommitment, asG1Element}
+import ScalarConversions.asScalusScalar
 
 /** Membership check is required when withdrawing.
   */

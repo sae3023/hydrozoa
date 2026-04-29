@@ -2,7 +2,7 @@ package hydrozoa.integration.stage1
 
 import hydrozoa.config.head.HeadConfig
 import hydrozoa.config.head.multisig.timing.TxTiming.BlockTimes.{BlockCreationEndTime, BlockCreationStartTime}
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import hydrozoa.integration.stage1.CommandGenerators.{TxMutator, TxStrategy}
 import hydrozoa.integration.stage1.model.Deposits.DepositStatus
 import hydrozoa.lib.cardano.scalus.QuantizedTime.{QuantizedFiniteDuration, QuantizedInstant}

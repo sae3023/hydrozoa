@@ -4,7 +4,7 @@ import hydrozoa.config.head.HeadConfig
 import hydrozoa.config.head.multisig.timing.TxTiming
 import hydrozoa.config.head.multisig.timing.TxTiming.BlockTimes.{BlockCreationEndTime, BlockCreationStartTime, FallbackTxStartTime, MajorBlockWakeupTime, SettlementTxEndTime}
 import hydrozoa.config.head.multisig.timing.TxTiming.RequestTimes.*
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import hydrozoa.config.node.MultiNodeConfig
 import hydrozoa.integration.stage1.Commands.*
 import hydrozoa.integration.stage1.Model.Error.UnexpectedState

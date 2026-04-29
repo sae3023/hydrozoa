@@ -1,5 +1,6 @@
 package hydrozoa.config
 
+import hydrozoa.lib.cardano.blueprint.HydrozoaBlueprint
 import cats.*
 import cats.data.*
 import org.scalacheck.Arbitrary

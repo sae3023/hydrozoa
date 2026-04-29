@@ -1,7 +1,7 @@
 package hydrozoa.multisig.ledger.l1.tx
 
 import hydrozoa.config.head.initialization.{InitialBlock, InitializationParameters}
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import hydrozoa.config.head.peers.HeadPeers
 import hydrozoa.lib.cardano.scalus.QuantizedTime.QuantizedInstant
 import hydrozoa.multisig.ledger.event.RequestId

@@ -3,7 +3,7 @@
 //package hydrozoa.rulebased.ledger.l1.utxo
 //
 //import hydrozoa.config.head.multisig.fallback.FallbackContingency
-//import hydrozoa.config.head.network.CardanoNetwork
+//import hydrozoa.lib.cardano.network.CardanoNetwork
 //import hydrozoa.config.head.peers.HeadPeers
 //import hydrozoa.lib.cardano.scalus.ledger.{CollateralOutput, CollateralUtxo}
 //import hydrozoa.multisig.consensus.peer.HeadPeerNumber

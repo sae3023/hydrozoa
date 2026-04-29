@@ -55,7 +55,6 @@ object EmulatorContinuingTxTracker:
             new EmulatorContinuingTxTracker(ref, emulator)
         }
 
-
 object CardanoBackendEmulator:
     def apply(emulator: Emulator): IO[CardanoBackendV2] =
         EmulatorContinuingTxTracker(emulator).map { tracker =>

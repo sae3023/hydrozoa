@@ -1,8 +1,8 @@
 package hydrozoa.rulebased.ledger.l1.utxo
 
-import hydrozoa.config.HydrozoaBlueprint
+import hydrozoa.lib.cardano.blueprint.HydrozoaBlueprint
 import hydrozoa.config.head.multisig.fallback.FallbackContingency
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import hydrozoa.config.head.peers.HeadPeers
 import hydrozoa.config.node.owninfo.OwnHeadPeerPrivate
 import hydrozoa.lib.cardano.scalus.VerificationKeyExtra.*

@@ -21,7 +21,7 @@ class CardanoBackendV2(
 
     override def resolve(input: TransactionInput): IO[Either[CardanoBackend.Error, Option[Utxo]]] =
         IO.fromFuture(IO.delay(provider.findUtxo(input))).map {
-            case Right(utxo) => Right(Some(utxo))
+            case Right(utxo)                      => Right(Some(utxo))
             case Left(_: UtxoQueryError.NotFound) => Right(None)
             case Left(err) =>
                 Left(CardanoBackend.Error.Unexpected(s"UTxO query error: $err"))
@@ -44,11 +44,11 @@ class CardanoBackendV2(
         }
 
     override def isTxKnown(txHash: TransactionHash): IO[Either[CardanoBackend.Error, Boolean]] =
-        IO.fromFuture(IO.delay(provider.checkTransaction(txHash))).map { status =>
-            Right(status == TransactionStatus.Confirmed)
-        }.handleError(e =>
-            Left(CardanoBackend.Error.Unexpected(e.getMessage))
-        )
+        IO.fromFuture(IO.delay(provider.checkTransaction(txHash)))
+            .map { status =>
+                Right(status == TransactionStatus.Confirmed)
+            }
+            .handleError(e => Left(CardanoBackend.Error.Unexpected(e.getMessage)))
 
     override def lastContinuingTxs(
         asset: (PolicyId, AssetName),
@@ -57,16 +57,14 @@ class CardanoBackendV2(
         continuingTxTracker.lastContinuingTxs(asset, after)
 
     override def submitTx(tx: Transaction): IO[Either[CardanoBackend.Error, Unit]] =
-        IO.fromFuture(IO.delay(provider.submit(tx))).map {
-            case Right(_)  => Right(())
-            case Left(err) => Left(CardanoBackend.Error.InvalidTx(err.message))
-        }.handleError(e =>
-            Left(CardanoBackend.Error.Unexpected(e.getMessage))
-        )
+        IO.fromFuture(IO.delay(provider.submit(tx)))
+            .map {
+                case Right(_)  => Right(())
+                case Left(err) => Left(CardanoBackend.Error.InvalidTx(err.message))
+            }
+            .handleError(e => Left(CardanoBackend.Error.Unexpected(e.getMessage)))
 
     override def fetchLatestParams: IO[Either[CardanoBackend.Error, ProtocolParams]] =
         IO.fromFuture(IO.delay(provider.fetchLatestParams))
             .map(Right(_))
-            .handleError(e =>
-                Left(CardanoBackend.Error.Unexpected(e.getMessage))
-            )
+            .handleError(e => Left(CardanoBackend.Error.Unexpected(e.getMessage)))

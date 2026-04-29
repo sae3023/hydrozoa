@@ -3,7 +3,7 @@ package hydrozoa.multisig.ledger.l1.tx
 import hydrozoa.config.head.initialization.{InitialBlock, InitializationParameters}
 import hydrozoa.config.head.multisig.fallback.FallbackContingency
 import hydrozoa.config.head.multisig.timing.TxTiming.BlockTimes.FinalizationTxEndTime
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import hydrozoa.config.head.peers.HeadPeers
 import hydrozoa.multisig.ledger.block.BlockVersion
 import hydrozoa.multisig.ledger.l1.tx.Metadata.Finalization

@@ -2,7 +2,7 @@ package hydrozoa.multisig.backend.cardano
 
 import cats.effect.IO
 import cats.effect.unsafe.implicits.global
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import io.github.cdimascio.dotenv.Dotenv
 import org.scalatest.Tag
 import org.scalatest.funsuite.AnyFunSuite

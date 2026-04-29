@@ -7,7 +7,7 @@ import cats.syntax.all.*
 import com.suprnation.actor.Actor.{Actor, Receive}
 import com.suprnation.actor.ActorRef.ActorRef
 import hydrozoa.*
-import hydrozoa.config.HydrozoaBlueprint
+import hydrozoa.lib.cardano.blueprint.HydrozoaBlueprint
 import hydrozoa.config.head.HeadConfig
 import hydrozoa.config.node.NodePrivateConfig
 import hydrozoa.lib.cardano.scalus.VerificationKeyExtra.{pubKeyHash, shelleyAddress}

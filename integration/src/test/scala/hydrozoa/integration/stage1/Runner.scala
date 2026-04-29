@@ -1,7 +1,7 @@
 package hydrozoa.integration.stage1
 
 import hydrozoa.config.head.multisig.timing.{generateDefaultTxTiming, generateTestnetTxTiming, generateYaciTxTiming}
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import hydrozoa.integration.stage1.ScenarioGenerators.*
 import hydrozoa.integration.stage1.Stage1PropertiesL1Mock.property
 import hydrozoa.integration.stage1.SuiteCardano.{Mock, Public, Yaci}
