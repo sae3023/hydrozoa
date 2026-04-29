@@ -1,6 +1,6 @@
 package hydrozoa.rulebased.ledger.l1.script.plutus
 
-import hydrozoa.config.HydrozoaBlueprint
+import hydrozoa.lib.cardano.blueprint.HydrozoaBlueprint
 import hydrozoa.rulebased.ledger.l1.script.plutus.DisputeResolutionValidator.DisputeRedeemer
 import hydrozoa.rulebased.ledger.l1.script.plutus.RuleBasedTreasuryValidator.TreasuryRedeemer
 import hydrozoa.rulebased.ledger.l1.state.TreasuryState.RuleBasedTreasuryDatumOnchain

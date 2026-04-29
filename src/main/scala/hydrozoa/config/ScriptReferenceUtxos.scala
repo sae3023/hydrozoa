@@ -5,7 +5,7 @@ import cats.data.*
 import cats.syntax.all.*
 import hydrozoa.config
 import hydrozoa.config.ScriptReferenceUtxos.Error.UnresolvableScriptUtxo
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import hydrozoa.lib.cardano.scalus.codecs.json.Codecs.given
 import hydrozoa.multisig.backend.cardano.CardanoBackend
 import io.circe.*
@@ -143,7 +143,7 @@ object ScriptReferenceUtxos {
 
                 actualHash = scriptRef.script.scriptHash
                 _ <- Either.cond(
-                  actualHash == hydrozoa.config.HydrozoaBlueprint.treasuryScriptHash,
+                  actualHash == hydrozoa.lib.cardano.blueprint.HydrozoaBlueprint.treasuryScriptHash,
                   (),
                   ScriptReferenceUtxos.Error.InvalidTreasuryScriptUtxo
                 )
@@ -173,7 +173,7 @@ object ScriptReferenceUtxos {
 
                 actualHash = scriptRef.script.scriptHash
                 _ <- Either.cond(
-                  actualHash == hydrozoa.config.HydrozoaBlueprint.disputeScriptHash,
+                  actualHash == hydrozoa.lib.cardano.blueprint.HydrozoaBlueprint.disputeScriptHash,
                   (),
                   ScriptReferenceUtxos.Error.InvalidDisputeScriptUtxo
                 )

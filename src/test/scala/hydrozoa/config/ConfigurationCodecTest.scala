@@ -4,7 +4,7 @@ import cats.effect.*
 import cats.effect.unsafe.implicits.global
 import hydrozoa.config.head.HeadConfig
 import hydrozoa.config.head.HeadConfig.given
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import hydrozoa.config.head.peers.HeadPeers
 import hydrozoa.config.node.owninfo.OwnHeadPeerPrivate
 import hydrozoa.config.node.{MultiNodeConfig, NodePrivateConfig}

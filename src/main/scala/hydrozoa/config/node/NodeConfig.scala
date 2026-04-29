@@ -4,8 +4,8 @@ import cats.data.EitherT
 import cats.effect.*
 import hydrozoa.config.ScriptReferenceUtxos
 import hydrozoa.config.head.HeadConfig
-import hydrozoa.config.head.network.CardanoNetwork.{Custom, cardanoNetworkDecoder}
-import hydrozoa.config.head.network.{CardanoNetwork, StandardCardanoNetwork}
+import hydrozoa.lib.cardano.network.CardanoNetwork.{Custom, cardanoNetworkDecoder}
+import hydrozoa.lib.cardano.network.{CardanoNetwork, StandardCardanoNetwork}
 import hydrozoa.config.head.peers.HeadPeers
 import hydrozoa.config.head.peers.HeadPeers.headPeersDecoder
 import hydrozoa.config.node.NodePrivateConfig.given

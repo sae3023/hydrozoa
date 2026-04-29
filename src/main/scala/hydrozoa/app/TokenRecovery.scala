@@ -2,8 +2,8 @@ package hydrozoa.app
 
 import cats.effect.{ExitCode, IO, IOApp}
 import com.bloxbean.cardano.client.util.HexUtil
-import hydrozoa.config.head.network.CardanoNetwork.ensureMinAda
-import hydrozoa.config.head.network.{CardanoNetwork, StandardCardanoNetwork}
+import hydrozoa.lib.cardano.network.CardanoNetwork.ensureMinAda
+import hydrozoa.lib.cardano.network.{CardanoNetwork, StandardCardanoNetwork}
 import hydrozoa.lib.cardano.scalus.VerificationKeyExtra.shelleyAddress
 import hydrozoa.lib.cardano.scalus.txbuilder.Transaction.attachVKeyWitnesses
 import hydrozoa.lib.cardano.wallet.WalletModule

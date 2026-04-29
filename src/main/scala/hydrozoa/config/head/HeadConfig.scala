@@ -11,8 +11,8 @@ import hydrozoa.config.ScriptReferenceUtxos.given_Decoder_Unresolved
 import hydrozoa.config.head.HeadConfig.Bootstrap.HeadConfigBootstrapError
 import hydrozoa.config.head.coil.CoilPeer
 import hydrozoa.config.head.initialization.{InitialBlock, InitializationParameters}
-import hydrozoa.config.head.network.CardanoNetwork.{Custom, cardanoNetworkDecoder}
-import hydrozoa.config.head.network.{CardanoNetwork, StandardCardanoNetwork}
+import hydrozoa.lib.cardano.network.CardanoNetwork.{Custom, cardanoNetworkDecoder}
+import hydrozoa.lib.cardano.network.{CardanoNetwork, StandardCardanoNetwork}
 import hydrozoa.config.head.parameters.HeadParameters
 import hydrozoa.config.head.peers.HeadPeers
 import hydrozoa.config.head.peers.HeadPeers.headPeersDecoder

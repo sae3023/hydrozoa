@@ -37,12 +37,63 @@ dockerCommands := dockerCommands.value.flatMap {
     case other                => List(other)
 }
 
-val scalusVersion = "0.15.1"
+ThisBuild / resolvers +=
+    "Sonatype OSS New Snapshots" at "https://central.sonatype.com/repository/maven-snapshots/"
+
+val scalusVersion = "0.16.0+262-3314a0df-SNAPSHOT"
 val bloxbeanVersion = "0.7.1"
 val http4sVersion = "0.23.32"
 
+lazy val lib: Project = (project in file("lib"))
+    .settings(
+      name := "hydrozoa-lib",
+      publish / skip := true,
+      resolvers +=
+          "Sonatype OSS New Snapshots" at "https://central.sonatype.com/repository/maven-snapshots/",
+      resolvers += Resolver.defaultLocal,
+      resolvers += "jitpack" at "https://jitpack.io",
+      libraryDependencies ++= Seq(
+        "org.scalus" % "scalus_3" % scalusVersion withSources (),
+        "org.scalus" % "scalus-cardano-ledger_3" % scalusVersion withSources (),
+        "com.bloxbean.cardano" % "cardano-client-backend-blockfrost" % bloxbeanVersion,
+        "ch.qos.logback" % "logback-classic" % "1.5.18",
+        "org.typelevel" %% "log4cats-slf4j" % "2.7.1",
+        "org.typelevel" %% "cats-core" % "2.13.0",
+        "org.typelevel" %% "cats-effect" % "3.6.3",
+        "com.github.suprnation.cats-actors" %% "cats-actors" % "2.0.1",
+        "org.typelevel" %% "spire" % "0.18.0",
+        "io.circe" %% "circe-core" % "0.14.10",
+        "io.circe" %% "circe-generic" % "0.14.10",
+        "io.circe" %% "circe-parser" % "0.14.10",
+        "org.scodec" %% "scodec-bits" % "1.2.1",
+        "dev.optics" %% "monocle-core" % "3.3.0",
+        "dev.optics" %% "monocle-macro" % "3.3.0",
+        "org.scalactic" %% "scalactic" % "3.2.19",
+      ),
+    )
+
+lazy val domain: Project = (project in file("domain"))
+    .dependsOn(lib)
+    .settings(
+      name := "hydrozoa-domain",
+      publish / skip := true,
+      resolvers +=
+          "Sonatype OSS New Snapshots" at "https://central.sonatype.com/repository/maven-snapshots/",
+      resolvers += Resolver.defaultLocal,
+      libraryDependencies ++= Seq(
+        "org.scalus" % "scalus_3" % scalusVersion,
+        "org.scalus" % "scalus-cardano-ledger_3" % scalusVersion,
+        "com.bloxbean.cardano" % "cardano-client-backend-blockfrost" % bloxbeanVersion,
+        "org.typelevel" %% "cats-core" % "2.13.0",
+        "io.circe" %% "circe-core" % "0.14.10",
+        "io.circe" %% "circe-generic" % "0.14.10",
+      ),
+    )
+
 // Main application
 lazy val core: Project = (project in file("."))
+    .aggregate(lib, domain)
+    .dependsOn(lib, domain)
     .settings(
       resolvers +=
           "Sonatype OSS New Snapshots" at "https://central.sonatype.com/repository/maven-snapshots/",
@@ -118,7 +169,18 @@ lazy val integration: Project = (project in file("integration"))
     )
 
 // Latest Scala 3 LTS version
-ThisBuild / scalaVersion := "3.3.6"
+ThisBuild / scalaVersion := "3.3.7"
+
+ThisBuild / incOptions := {
+    incOptions.value
+        .withLogRecompileOnMacro(false)
+        .withUseOptimizedSealed(true)
+}
+
+ThisBuild / parallelExecution := true
+Global / concurrentRestrictions := Seq(
+  Tags.limitAll(java.lang.Runtime.getRuntime.availableProcessors())
+)
 
 ThisBuild / scalacOptions ++= Seq(
   "-feature",
@@ -133,7 +195,7 @@ ThisBuild / scalacOptions ++= Seq(
 )
 
 // Add the Scalus compiler plugin
-addCompilerPlugin("org.scalus" % "scalus-plugin_3" % scalusVersion)
+addCompilerPlugin("org.scalus" %% "scalus-plugin" % scalusVersion cross CrossVersion.full)
 
 // Custom commands to format and lint all subprojects
 // TODO: Restore integration module to fmt and lint
@@ -151,7 +213,7 @@ ThisBuild / testFrameworks += new TestFramework("org.scalatest.tools.Framework")
 
 inThisBuild(
   List(
-    scalaVersion := "3.3.6",
+    scalaVersion := "3.3.7",
     semanticdbEnabled := true,
     semanticdbVersion := scalafixSemanticdb.revision
   )

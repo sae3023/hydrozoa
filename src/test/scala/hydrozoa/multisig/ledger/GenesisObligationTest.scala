@@ -1,8 +1,8 @@
 package hydrozoa.multisig.ledger
 
 import cats.data.NonEmptyList
-import hydrozoa.config.head.network.CardanoNetwork
-import hydrozoa.config.head.network.CardanoNetworkGen.given_Arbitrary_CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetworkGen.given_Arbitrary_CardanoNetwork
 import hydrozoa.multisig.ledger.eutxol2.tx.GenesisObligation
 import io.bullet.borer.Cbor
 import org.scalacheck.*

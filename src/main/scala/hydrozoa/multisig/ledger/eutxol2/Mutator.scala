@@ -1,6 +1,6 @@
 package hydrozoa.multisig.ledger.eutxol2
 
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import hydrozoa.lib.cardano.scalus.QuantizedTime.QuantizedInstant
 import hydrozoa.multisig.ledger.eutxol2.EutxoL2Ledger.Config
 import hydrozoa.multisig.ledger.eutxol2.tx.L2Tx

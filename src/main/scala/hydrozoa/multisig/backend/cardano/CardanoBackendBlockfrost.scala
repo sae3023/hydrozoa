@@ -10,7 +10,7 @@ import com.bloxbean.cardano.client.backend.api.BackendService
 import com.bloxbean.cardano.client.backend.blockfrost.service.BFBackendService
 import com.bloxbean.cardano.client.backend.model.{AssetTransactionContent, ScriptDatumCbor, TxContentRedeemers, TxContentUtxo}
 import com.bloxbean.cardano.client.plutus.spec.RedeemerTag
-import hydrozoa.config.head.network.{CardanoNetwork, StandardCardanoNetwork}
+import hydrozoa.lib.cardano.network.{CardanoNetwork, StandardCardanoNetwork}
 import hydrozoa.lib.logging.Logging
 import hydrozoa.multisig.backend.cardano.CardanoBackend.Error
 import hydrozoa.multisig.backend.cardano.CardanoBackend.Error.*

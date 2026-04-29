@@ -6,7 +6,7 @@ import com.bloxbean.cardano.client.util.HexUtil
 import hydrozoa.config.head.initialization.CappedValueGen.{ensureMinAdaLenient, generateCappedValue}
 import hydrozoa.config.head.multisig.timing.TxTiming.BlockTimes.{BlockCreationEndTime, BlockCreationStartTime}
 import hydrozoa.config.head.multisig.timing.TxTiming.RequestTimes.*
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import hydrozoa.integration.stage1.CommandGenerators.L2txGen
 import hydrozoa.integration.stage1.CommandGenerators.TxMutator.Identity
 import hydrozoa.integration.stage1.CommandGenerators.TxStrategy.{Dust, RandomWithdrawals, Regular}

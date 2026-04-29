@@ -10,7 +10,7 @@ import cats.data.ReaderT
 import hydrozoa.config.head.initialization.{CappedValueGen, InitializationParametersGenTopDown}
 import hydrozoa.config.head.multisig.timing.TxTiming.BlockTimes.BlockCreationEndTime
 import hydrozoa.config.head.InitParamsType
-import hydrozoa.config.head.network.{CardanoNetwork, StandardCardanoNetwork}
+import hydrozoa.lib.cardano.network.{CardanoNetwork, StandardCardanoNetwork}
 import hydrozoa.config.node.MultiNodeConfig
 import hydrozoa.config.node.operation.evacuation.generateNodeOperationEvacuationConfig
 import hydrozoa.config.node.operation.multisig.generateNodeOperationMultisigConfig

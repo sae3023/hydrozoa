@@ -1,8 +1,8 @@
 package hydrozoa.rulebased.ledger.l1.script.plutus
 
 import cats.data.NonEmptyList
-import hydrozoa.config.head.network.CardanoNetwork
-import hydrozoa.config.head.network.CardanoNetwork.ensureMinAda
+import hydrozoa.lib.cardano.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork.ensureMinAda
 import hydrozoa.lib.cardano.scalus.contextualscalus.Change
 import hydrozoa.lib.cardano.scalus.contextualscalus.TransactionBuilder.{build, finalizeContext}
 import hydrozoa.multisig.ledger.l1.tx.Tx

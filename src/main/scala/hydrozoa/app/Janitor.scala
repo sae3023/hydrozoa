@@ -3,8 +3,8 @@ package hydrozoa.app
 import cats.effect.IO
 import com.bloxbean.cardano.client.util.HexUtil
 import hydrozoa.config.head.HeadConfig
-import hydrozoa.config.head.network.CardanoNetwork
-import hydrozoa.config.head.network.CardanoNetwork.ensureMinAda
+import hydrozoa.lib.cardano.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork.ensureMinAda
 import hydrozoa.lib.logging.Logging
 import hydrozoa.multisig.backend.cardano.CardanoBackend
 import hydrozoa.multisig.consensus.peer.HeadPeerWallet

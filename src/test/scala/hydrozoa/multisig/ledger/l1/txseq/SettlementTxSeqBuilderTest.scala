@@ -1,6 +1,6 @@
 package hydrozoa.multisig.ledger.l1.txseq
 
-import hydrozoa.config.HydrozoaBlueprint
+import hydrozoa.lib.cardano.blueprint.HydrozoaBlueprint
 import hydrozoa.config.node.MultiNodeConfig
 import hydrozoa.multisig.ledger.l1.tx.*
 import hydrozoa.multisig.ledger.l1.txseq.SettlementTxSeq.{NoRollouts, WithRollouts}

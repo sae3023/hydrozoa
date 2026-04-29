@@ -1,6 +1,6 @@
 package hydrozoa.lib.cardano.scalus.contextualscalus
 
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import scalus.cardano.txbuilder as scalusTx
 import scalus.cardano.txbuilder.DiffHandler
 

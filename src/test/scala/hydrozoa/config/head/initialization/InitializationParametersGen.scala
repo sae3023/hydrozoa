@@ -6,8 +6,8 @@ import cats.data.Kleisli.{ask, liftF}
 import cats.syntax.all.*
 import hydrozoa.config.head.multisig.fallback.{FallbackContingency, generateFallbackContingency}
 import hydrozoa.config.head.multisig.timing.TxTiming.BlockTimes.BlockCreationEndTime
-import hydrozoa.config.head.network.CardanoNetwork
-import hydrozoa.config.head.network.CardanoNetwork.ensureMinAda
+import hydrozoa.lib.cardano.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork.ensureMinAda
 import hydrozoa.lib.cardano.scalus.QuantizedTime.QuantizedInstant
 import hydrozoa.lib.cardano.scalus.given_Choose_Coin
 import hydrozoa.lib.cardano.scalus.ledger.{asUtxoList, asUtxos}

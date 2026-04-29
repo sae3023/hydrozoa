@@ -1,7 +1,7 @@
 package hydrozoa.multisig.ledger.joint.obligation
 
 import cats.data.NonEmptyVector
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import scalus.cardano.ledger.utils.MinCoinSizedTransactionOutput
 import scalus.cardano.ledger.{Coin, KeepRaw, Sized, TransactionOutput}
 

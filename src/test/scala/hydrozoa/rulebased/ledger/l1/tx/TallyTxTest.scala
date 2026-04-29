@@ -1,8 +1,8 @@
 package hydrozoa.rulebased.ledger.l1.tx
 
 import cats.effect.unsafe.implicits.global
-import hydrozoa.config.HydrozoaBlueprint
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.blueprint.HydrozoaBlueprint
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import hydrozoa.config.head.peers.HeadPeers
 import hydrozoa.config.node.{MultiNodeConfig, NodeConfig}
 import hydrozoa.lib.number.PositiveInt

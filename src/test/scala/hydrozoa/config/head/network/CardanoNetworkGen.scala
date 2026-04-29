@@ -1,4 +1,4 @@
-package hydrozoa.config.head.network
+package hydrozoa.lib.cardano.network
 
 import org.scalacheck.{Arbitrary, Gen}
 

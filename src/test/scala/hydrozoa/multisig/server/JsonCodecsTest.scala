@@ -1,6 +1,6 @@
 package hydrozoa.multisig.server
 
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import org.scalatest.funsuite.AnyFunSuite
 import scala.annotation.nowarn
 

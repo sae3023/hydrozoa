@@ -2,7 +2,7 @@ package hydrozoa.integration.stage1.model
 
 import hydrozoa.config.head.multisig.timing.TxTiming
 import hydrozoa.config.head.multisig.timing.TxTiming.RequestTimes.*
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import hydrozoa.integration.stage1.Commands.RegisterDepositCommand
 import hydrozoa.integration.stage1.Model
 

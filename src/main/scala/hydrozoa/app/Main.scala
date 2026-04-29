@@ -5,7 +5,7 @@ import com.bloxbean.cardano.client.util.HexUtil
 import com.bloxbean.cardano.client.util.HexUtil.encodeHexString
 import com.comcast.ip4s.{host, port}
 import com.suprnation.actor.ActorSystem
-import hydrozoa.config.head.network.{CardanoNetwork, StandardCardanoNetwork}
+import hydrozoa.lib.cardano.network.{CardanoNetwork, StandardCardanoNetwork}
 import hydrozoa.lib.cardano.scalus.VerificationKeyExtra.shelleyAddress
 import hydrozoa.lib.logging.Logging
 import hydrozoa.multisig.MultisigRegimeManager

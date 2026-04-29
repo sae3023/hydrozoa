@@ -1,8 +1,8 @@
 package hydrozoa.multisig.ledger.l1.txseq
 
 import cats.data.NonEmptyList
-import hydrozoa.config.HydrozoaBlueprint
-import hydrozoa.config.head.network.CardanoNetwork.ensureMinAda
+import hydrozoa.lib.cardano.blueprint.HydrozoaBlueprint
+import hydrozoa.lib.cardano.network.CardanoNetwork.ensureMinAda
 import hydrozoa.config.node.MultiNodeConfig
 import hydrozoa.multisig.ledger.l1.token.CIP67
 import hydrozoa.multisig.ledger.l1.tx.{InitializationTx, Metadata as MD}

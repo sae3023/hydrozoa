@@ -1,7 +1,7 @@
 package hydrozoa.multisig.ledger.joint
 
 import cats.implicits.*
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import hydrozoa.multisig.ledger.commitment.KzgCommitment
 import hydrozoa.multisig.ledger.commitment.KzgCommitment.KzgCommitment
 import hydrozoa.multisig.ledger.joint.EvacuationKey.given
@@ -25,31 +25,6 @@ given toDataTransactionInput: ToData[TransactionInput] with {
     override def apply(i: TransactionInput): Data =
         toData(LedgerToPlutusTranslation.getTxOutRefV3(i))
 }
-
-given evacuationKeyOrdering: Ordering[EvacuationKey] with {
-    override def compare(x: EvacuationKey, y: EvacuationKey): Int =
-        summon[Ordering[ByteString]].compare(x.byteString, y.byteString)
-}
-
-final case class EvacuationKey private (byteString: ByteString)
-
-object EvacuationKey:
-    def apply(bytes: ByteString): Option[EvacuationKey] = Some(new EvacuationKey(bytes))
-    // if bytes.length == 32 then Some(new EvacuationKey(bytes)) else None
-
-    given evacuationKeyKeyEncoder: KeyEncoder[EvacuationKey] = {
-        KeyEncoder.encodeKeyString.contramap(_.byteString.toHex)
-    }
-
-    // FIXME: This is partial, but KeyDecoder lacks the "emap" method that Decoder has?
-    given evacuationKeyKeyDecoder: KeyDecoder[EvacuationKey] with {
-        override def apply(s: String): Option[EvacuationKey] =
-            for {
-                hex <- KeyDecoder.decodeKeyString(s)
-                bytes <- Try(ByteString.fromHex(s)).toOption
-                ek <- EvacuationKey(bytes)
-            } yield ek
-    }
 
 final case class EvacuationMap(
     evacuationMap: TreeMap[EvacuationKey, Payout.Obligation]

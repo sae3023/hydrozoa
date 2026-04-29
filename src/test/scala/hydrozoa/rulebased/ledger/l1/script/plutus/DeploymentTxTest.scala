@@ -2,8 +2,9 @@ package hydrozoa.rulebased.ledger.l1.script.plutus
 
 import cats.data.NonEmptyList
 import com.bloxbean.cardano.client.util.HexUtil
-import hydrozoa.config.head.network.CardanoNetwork
-import hydrozoa.config.{HydrozoaBlueprint, ScriptReferenceUtxos}
+import hydrozoa.lib.cardano.network.CardanoNetwork
+import hydrozoa.config.ScriptReferenceUtxos
+import hydrozoa.lib.cardano.blueprint.HydrozoaBlueprint
 import hydrozoa.lib.cardano.scalus.txbuilder.Transaction.attachVKeyWitnesses
 import org.scalatest.funsuite.AnyFunSuite
 import scala.annotation.nowarn

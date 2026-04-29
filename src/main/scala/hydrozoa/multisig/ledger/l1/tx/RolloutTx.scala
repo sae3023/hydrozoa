@@ -2,7 +2,7 @@ package hydrozoa.multisig.ledger.l1.tx
 
 import cats.data.NonEmptyVector
 import hydrozoa.config.head.initialization.{InitialBlock, InitializationParameters}
-import hydrozoa.config.head.network.CardanoNetwork
+import hydrozoa.lib.cardano.network.CardanoNetwork
 import hydrozoa.config.head.peers.HeadPeers
 import hydrozoa.lib.cardano.scalus.txbuilder.DiffHandler.{WrappedCoin, prebalancedLovelaceDiffHandler}
 import hydrozoa.multisig.ledger.joint.obligation.Payout
