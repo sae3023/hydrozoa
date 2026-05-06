@@ -9,8 +9,10 @@ import hydrozoa.config.head.network.{CardanoNetwork, StandardCardanoNetwork}
 import hydrozoa.lib.cardano.scalus.VerificationKeyExtra.shelleyAddress
 import hydrozoa.lib.logging.Logging
 import hydrozoa.multisig.MultisigRegimeManager
-import hydrozoa.multisig.backend.cardano.CardanoBackendBlockfrost
-import hydrozoa.multisig.ledger.remote.RemoteL2Ledger
+import hydrozoa.multisig.backend.cardano.{CardanoBackendBlockfrost, CardanoBackendEmulator}
+import hydrozoa.multisig.ledger.eutxol2.EutxoL2Ledger
+import scalus.cardano.ledger.rules.{Context, UtxoEnv}
+import scalus.cardano.node.{Emulator, EmulatorBase}
 import hydrozoa.multisig.server.HydrozoaServer
 import io.github.cdimascio.dotenv.Dotenv
 import scalus.cardano.address.{Address, ShelleyAddress}
@@ -169,11 +171,23 @@ object Main extends IOApp {
         val setupIO = for {
             _ <- logger.info("Starting Hydrozoa node...")
             env <- loadEnv
-            _ <- logger.info("Starting Cardano Blockfrost Backend...")
-            backend <- CardanoBackendBlockfrost(
-              network = Left(cardanoNetwork),
-              apiKey = env.blockfrostApiKey
+            peerAddress = env.verificationKey.shelleyAddress()(using cardanoNetwork)
+            emulatorContext = Context(
+              env = UtxoEnv(
+                slot = 0,
+                params = cardanoNetwork.cardanoProtocolParams,
+                certState = scalus.cardano.ledger.CertState.empty,
+                network = cardanoNetwork.network
+              ),
+              slotConfig = cardanoNetwork.slotConfig
             )
+            emulator = Emulator(
+              initialUtxos =
+                  EmulatorBase.createInitialUtxos(Seq(peerAddress), scalus.cardano.ledger.Value.ada(10_000L)),
+              initialContext = emulatorContext
+            )
+            _ <- logger.info("Starting Cardano Emulator Backend...")
+            backend <- CardanoBackendEmulator(emulator)
             nodeConfig <- Bootstrap.mkNodeConfig(cardanoNetwork, backend)(
               vKey = env.verificationKey,
               sKey = env.signingKey,
@@ -188,15 +202,8 @@ object Main extends IOApp {
             result <- Resource.eval(setupIO)
             (env, backend, nodeConfig) = result
 
-            _ <- Resource.eval(
-              logger.info(s"Connecting to L2 ledger at ${env.sugarRushUri}")
-            )
-            remoteL2Ledger <- Resource.eval(
-              RemoteL2Ledger.create(
-                wsUri = env.sugarRushUri,
-                config = cardanoNetwork
-              )
-            )
+            _ <- Resource.eval(logger.info("Creating local EutxoL2Ledger..."))
+            l2Ledger <- Resource.eval(EutxoL2Ledger(nodeConfig.headConfig))
 
             // Attach cleanup to ActorSystem resource - env, backend, nodeConfig are in scope here
             system <- ActorSystem[IO]("Hydrozoa Demo").onFinalize(
@@ -209,11 +216,11 @@ object Main extends IOApp {
                     tokenRecoveryAddress = env.tokenRecoveryAddress
                   )
             )
-        } yield (env, backend, nodeConfig, remoteL2Ledger, system)
+        } yield (env, backend, nodeConfig, l2Ledger, system)
 
-        resource.use { case (env, backend, nodeConfig, remoteL2Ledger, system) =>
+        resource.use { case (env, backend, nodeConfig, l2Ledger, system) =>
             for {
-                mrm <- MultisigRegimeManager.apply(nodeConfig, backend, remoteL2Ledger)
+                mrm <- MultisigRegimeManager.apply(nodeConfig, backend, l2Ledger)
                 _ <- system.actorOf(mrm, "MultisigRegimeManager")
                 _ <- logger.info("Hydrozoa node started successfully")
 
@@ -235,6 +242,10 @@ object Main extends IOApp {
                             )
                             .use(_ => IO.never)
                             .start // Run in background
+                            .void *>
+                        DemoWorkload
+                            .run(connections, nodeConfig.headConfig, nodeConfig.ownHeadWallet)
+                            .start
                             .void
                 }
 

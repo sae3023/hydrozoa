@@ -30,6 +30,7 @@ import hydrozoa.multisig.consensus.peer.{HeadPeerNumber, HeadPeerWallet}
 import hydrozoa.multisig.ledger.block.{Block, BlockBrief, BlockEffects, BlockHeader}
 import hydrozoa.multisig.ledger.joint.obligation.Payout
 import hydrozoa.multisig.ledger.joint.{EvacuationKey, EvacuationMap, evacuationKeyOrdering}
+import hydrozoa.multisig.ledger.eutxol2.toEvacuationKey
 import hydrozoa.multisig.ledger.l1.txseq.InitializationTxSeq
 import hydrozoa.rulebased.ledger.l1.script.plutus.RuleBasedTreasuryValidator.evacuationKeyToData
 import java.security.SecureRandom
@@ -109,30 +110,28 @@ object Bootstrap:
           disputeResolutionConfig = DisputeResolutionConfig.default(cardanoNetwork.slotConfig),
           settlementConfig = SettlementConfig(PositiveInt.unsafeApply(100)),
           coilQuorum = 0,
-          l2ParamsHash = Hash32.fromByteString(ByteString.empty),
+          l2ParamsHash = Hash32.fromByteString(ByteString.fromArray(new Array[Byte](32))),
         )
 
-        // This is the temporary hard-coded evacuation map - 10 ADA
-        // goes to the fee account so the whole Sugar Rush ledger can be
-        // correctly evacuated at any point of time.
+        peerAddress = vKey.shelleyAddress()(using cardanoNetwork)
+
+        // Fee account evacuation entry — 10 ADA reserved so the L2 ledger
+        // can be correctly evacuated at any point of time.
         feeAccValue = Value.ada(10L)
+        feeAccTxIn = TransactionInput(
+          TransactionHash.fromHex(
+            "ef779a7b07ef490490ae0039458bccb3e78df0776dbf014e3cf780c600000000"
+          ),
+          0
+        )
         evacMap: EvacuationMap = EvacuationMap.apply(
           TreeMap(
-            EvacuationKey
-                .apply(
-                  ByteString.fromHex(
-                    "ef779a7b07ef490490ae0039458bccb3e78df0776dbf014e3cf780c600000000"
-                  )
-                )
-                .get ->
+            feeAccTxIn.toEvacuationKey ->
                 Payout.Obligation
                     .apply(
                       output = KeepRaw.apply(
                         TransactionOutput.apply(
-                          address = Address
-                              .fromBech32(
-                                "addr_test1vrhh0xnmqlh5jpys4cqrj3vteje70r0swakm7q2w8nmcp3sh5wdk4"
-                              ),
+                          address = peerAddress,
                           value = feeAccValue
                         )
                       ),
@@ -142,8 +141,6 @@ object Bootstrap:
                     .get
           )
         )
-
-        peerAddress = vKey.shelleyAddress()(using cardanoNetwork)
         _ <- logger.info(s"Peer address: ${peerAddress.toBech32.get}")
 
         // Fetch UTXOs from backend
@@ -310,9 +307,9 @@ object Bootstrap:
             // NOTE: Reusing the same multisig wallet, in production this should be a different wallet
             evacuationWallet = ownHeadWallet
           ),
-          hydrozoaHost = ???,
-          hydrozoaPort = ???,
-          blockfrostApiKey = ???,
+          hydrozoaHost = "localhost",
+          hydrozoaPort = "8080",
+          blockfrostApiKey = "unused",
           nodeOperationMultisigConfig = NodeOperationMultisigConfig.default
         ).get
     }
