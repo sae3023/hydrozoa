@@ -40,7 +40,7 @@ dockerCommands := dockerCommands.value.flatMap {
 ThisBuild / resolvers +=
     "Sonatype OSS New Snapshots" at "https://central.sonatype.com/repository/maven-snapshots/"
 
-val scalusVersion = "0.16.0"
+val scalusVersion = "0.16.0+262-3314a0df-SNAPSHOT"
 val bloxbeanVersion = "0.7.1"
 val http4sVersion = "0.23.32"
 
