@@ -11,7 +11,6 @@ import hydrozoa.multisig.ledger.commitment.{KzgCommitment, Membership, TrustedSe
 import hydrozoa.multisig.ledger.eutxol2.toEvacuationMap
 import hydrozoa.multisig.ledger.joint.EvacuationMap
 import hydrozoa.rulebased.ledger.l1.script.plutus.RuleBasedTreasuryValidator
-import hydrozoa.rulebased.ledger.l1.state.TreasuryState.RuleBasedTreasuryDatum
 import hydrozoa.rulebased.ledger.l1.state.TreasuryState.RuleBasedTreasuryDatum.Resolved
 import hydrozoa.rulebased.ledger.l1.tx.CommonGenerators.*
 import hydrozoa.rulebased.ledger.l1.utxo.{RuleBasedTreasuryOutput, RuleBasedTreasuryUtxo}
@@ -19,8 +18,8 @@ import monocle.*
 import monocle.syntax.all.*
 import org.scalacheck.Prop.propBoolean
 import org.scalacheck.{Arbitrary, Gen, Prop, Properties}
+import scalus.cardano.address.Network
 import scalus.cardano.address.ShelleyPaymentPart.Key
-import scalus.cardano.address.{Network, ShelleyPaymentPart}
 import scalus.cardano.ledger.*
 import scalus.cardano.ledger.ArbitraryInstances.given
 import scalus.cardano.onchain.plutus.prelude

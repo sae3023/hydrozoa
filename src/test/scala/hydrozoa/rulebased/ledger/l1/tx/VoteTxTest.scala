@@ -9,7 +9,6 @@ import hydrozoa.config.node.MultiNodeConfig
 import hydrozoa.lib.cardano.scalus.VerificationKeyExtra.shelleyAddress
 import hydrozoa.lib.number.PositiveInt
 import hydrozoa.multisig.ledger.l1.token.CIP67.HasTokenNames
-import hydrozoa.rulebased.ledger.l1.state.VoteState
 import hydrozoa.rulebased.ledger.l1.state.VoteState.VoteStatus.AwaitingVote
 import hydrozoa.rulebased.ledger.l1.state.VoteState.{VoteDatum, VoteStatus}
 import hydrozoa.rulebased.ledger.l1.tx.CommonGenerators.*

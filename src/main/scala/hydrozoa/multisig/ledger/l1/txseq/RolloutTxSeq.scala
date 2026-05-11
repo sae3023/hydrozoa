@@ -12,7 +12,6 @@ import hydrozoa.multisig.ledger.l1.tx.Tx.Builder.BuilderResultSimple
 import hydrozoa.multisig.ledger.l1.utxo.RolloutUtxo
 import scala.annotation.tailrec
 import scalus.cardano.ledger.Coin
-import scalus.cardano.txbuilder.SomeBuildError
 
 /** A non-empty chain of rollout transactions in order of chaining.
   *
@@ -45,7 +44,6 @@ private object RolloutTxSeqOps {
     )
 
     final case class Build(config: Config)(payouts: NonEmptyVector[Payout.Obligation]) {
-        import Build.*
 
         private val singleBuilderLast = SingleBuilder.Last(config)
         private val singleBuilderNotLast = SingleBuilder.NotLast(config)

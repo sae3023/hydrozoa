@@ -7,7 +7,6 @@ import hydrozoa.config.head.multisig.timing.TxTiming.*
 import hydrozoa.config.head.multisig.timing.TxTiming.BlockTimes.{BlockCreationEndTime, InitializationTxEndTime}
 import hydrozoa.config.head.network.CardanoNetwork
 import hydrozoa.config.head.peers.HeadPeers
-import hydrozoa.multisig.ledger.l1.token.CIP67
 import hydrozoa.multisig.ledger.l1.token.CIP67.{HasTokenNames, HeadTokenNames}
 import hydrozoa.multisig.ledger.l1.tx.InitializationTx.InitializationTxOps.Parse.Error.MetadataParseError
 import hydrozoa.multisig.ledger.l1.tx.Metadata as MD
@@ -80,7 +79,6 @@ object InitializationTx {
 
         final case class Build(config: Config)(blockCreationEndTime: BlockCreationEndTime) {
 
-            import Build.*
 
             lazy val result: BuilderResultSimple[InitializationTx] = for {
                 _ <- Either

@@ -41,7 +41,7 @@ object Main extends IOApp {
         verificationKey: VerificationKey,
         signingKey: SigningKey,
         minEquity: Coin,
-        blockfrostApiKey: String,
+        blockfrostApiKey: Option[String],
         sugarRushHost: String,
         sugarRushPort: String,
         tokenRecoveryAddress: Option[ShelleyAddress],
@@ -95,8 +95,10 @@ object Main extends IOApp {
     /** Load configuration from environment variables. */
     def loadEnv: IO[EnvConfig] =
         for {
-            blockfrostKey <- getMandatoryEnvVar("BLOCKFROST_API_KEY")
-            _ <- logger.info(s"Loaded Blockfrost API key: ${blockfrostKey.take(8)}...")
+            blockfrostKey <- IO(Option(dotenv.get("BLOCKFROST_API_KEY")).orElse(sys.env.get("BLOCKFROST_API_KEY")))
+            _ <- blockfrostKey.fold(logger.info("No Blockfrost API key set (emulator mode)"))(k =>
+                logger.info(s"Loaded Blockfrost API key: ${k.take(8)}...")
+            )
 
             vKeyHex <- getMandatoryEnvVar("CARDANO_VERIFICATION_KEY")
             vKeyBs <- parseHex(vKeyHex, 32, "CARDANO_VERIFICATION_KEY")

@@ -3,7 +3,6 @@ package test
 import cats.*
 import cats.data.*
 import cats.syntax.all.*
-import scalus.cardano.ledger.rules.CardanoMutator.{Context, Event, Result, State}
 import scalus.cardano.ledger.rules.{CardanoMutator, OutsideValidityIntervalValidator, STS}
 
 object Kendo {

@@ -2,7 +2,7 @@ package hydrozoa.multisig.ledger.l1.tx
 
 import cats.data.NonEmptyList
 import hydrozoa.config.head.multisig.timing.TxTiming.RequestTimes.unsafeRequestValidityEndTime
-import hydrozoa.config.node.{MultiNodeConfig, NodeConfig}
+import hydrozoa.config.node.MultiNodeConfig
 import hydrozoa.lib.cardano.scalus.given_Choose_Coin
 import hydrozoa.multisig.consensus.peer.HeadPeerNumber
 import hydrozoa.multisig.ledger.eutxol2.tx.GenesisObligation
@@ -13,7 +13,7 @@ import monocle.*
 import monocle.syntax.all.*
 import org.scalacheck.Arbitrary.arbitrary
 import org.scalacheck.Prop.propBoolean
-import org.scalacheck.{Arbitrary, Gen, Prop, Properties}
+import org.scalacheck.{Gen, Prop, Properties}
 import scala.concurrent.duration.FiniteDuration
 import scalus.cardano.ledger.ArbitraryInstances.given
 import scalus.cardano.ledger.TransactionOutput.valueLens

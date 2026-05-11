@@ -7,8 +7,8 @@ import hydrozoa.multisig.ledger.joint.EvacuationKey
 import hydrozoa.rulebased.ledger.l1.script.plutus.RuleBasedTreasuryValidator.TreasuryRedeemer.{Deinit, Evacuate, Resolve}
 import hydrozoa.rulebased.ledger.l1.state.TreasuryState.RuleBasedTreasuryDatumOnchain.{ResolvedOnchain, UnresolvedOnchain}
 import hydrozoa.rulebased.ledger.l1.state.TreasuryState.{MembershipProof, RuleBasedTreasuryDatumOnchain}
+import hydrozoa.rulebased.ledger.l1.state.VoteState.VoteDatum
 import hydrozoa.rulebased.ledger.l1.state.VoteState.VoteStatus.*
-import hydrozoa.rulebased.ledger.l1.state.VoteState.{VoteDatum, VoteStatus}
 import scalus.*
 import scalus.cardano.address.ShelleyDelegationPart.Null
 import scalus.cardano.address.{Network, ShelleyAddress, ShelleyPaymentPart}

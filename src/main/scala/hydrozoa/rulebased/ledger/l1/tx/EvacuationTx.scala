@@ -1,6 +1,5 @@
 package hydrozoa.rulebased.ledger.l1.tx
 
-import cats.syntax.all.*
 import hydrozoa.*
 import hydrozoa.config.ScriptReferenceUtxos
 import hydrozoa.config.head.network.CardanoNetwork

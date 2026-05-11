@@ -4,7 +4,6 @@ import hydrozoa.config.head.peers.HeadPeers
 import hydrozoa.multisig.consensus.peer.HeadPeerWallet.dummyHeadPeerWalletEncoder
 import hydrozoa.multisig.consensus.peer.{HeadPeerNumber, HeadPeerWallet}
 import io.circe.*
-import io.circe.generic.semiauto.*
 import io.circe.syntax.*
 import scalus.crypto.ed25519.VerificationKey
 

@@ -2,7 +2,6 @@ package hydrozoa.rulebased
 
 import cats.*
 import cats.effect.*
-import cats.syntax.all.*
 import com.suprnation.actor.Actor.*
 import hydrozoa.lib.cardano.scalus.QuantizedTime.QuantizedInstant
 import hydrozoa.multisig.backend.cardano.CardanoBackend

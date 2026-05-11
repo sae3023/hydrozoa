@@ -2,26 +2,22 @@ package hydrozoa.app
 
 import cats.effect.IO
 import hydrozoa.config.head.HeadConfig
-import hydrozoa.config.head.initialization.InitializationParameters.HeadId
-import hydrozoa.config.head.network.CardanoNetwork
 import hydrozoa.lib.cardano.scalus.ledger.withZeroFees
 import hydrozoa.lib.cardano.scalus.txbuilder.DiffHandler.prebalancedLovelaceDiffHandler
 import hydrozoa.lib.logging.Logging
 import hydrozoa.multisig.MultisigRegimeManager
 import hydrozoa.multisig.consensus.*
 import hydrozoa.multisig.consensus.peer.HeadPeerWallet
-import hydrozoa.multisig.ledger.eutxol2.toEvacuationKey
 import hydrozoa.multisig.ledger.event.{RequestId, RequestNumber}
 import hydrozoa.multisig.ledger.l1.token.CIP67
 import io.bullet.borer.Cbor
+import scala.concurrent.duration.*
 import scalus.cardano.ledger.*
 import scalus.cardano.ledger.AuxiliaryData.Metadata
 import scalus.cardano.ledger.TransactionOutput.Babbage
 import scalus.cardano.txbuilder.TransactionBuilder
 import scalus.cardano.txbuilder.TransactionBuilderStep.*
 import scalus.uplc.builtin.ByteString
-
-import scala.concurrent.duration.*
 
 object DemoWorkload {
 

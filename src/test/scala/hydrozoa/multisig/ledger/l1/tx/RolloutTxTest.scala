@@ -1,6 +1,5 @@
 package hydrozoa.multisig.ledger.l1.tx
 
-import cats.*
 import cats.data.*
 import hydrozoa.config.head.network.CardanoNetwork
 import hydrozoa.config.node.MultiNodeConfig

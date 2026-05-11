@@ -446,7 +446,9 @@ object Migrate extends IOApp:
 
             backend <- CardanoBackendBlockfrost(
               network = Left(cardanoNetwork),
-              apiKey = env.blockfrostApiKey
+              apiKey = env.blockfrostApiKey.getOrElse(
+                  throw new IllegalStateException("BLOCKFROST_API_KEY required for Blockfrost backend")
+              )
             )
 
             // Get peer address

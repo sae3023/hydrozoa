@@ -1,6 +1,5 @@
 package hydrozoa.rulebased.ledger.l1.tx
 
-import cats.implicits.*
 import hydrozoa.*
 import hydrozoa.config.ScriptReferenceUtxos
 import hydrozoa.config.head.multisig.fallback.FallbackContingency
@@ -15,14 +14,13 @@ import hydrozoa.multisig.ledger.l1.token.CIP67.HasTokenNames
 import hydrozoa.multisig.ledger.l1.tx.Tx
 import hydrozoa.multisig.ledger.l1.tx.Tx.Validators.nonSigningNonValidityChecksValidators
 import hydrozoa.rulebased.ledger.l1.script.plutus.DisputeResolutionValidator.{DisputeRedeemer, TallyRedeemer, maxVote}
-import hydrozoa.rulebased.ledger.l1.state.VoteState
 import hydrozoa.rulebased.ledger.l1.state.VoteState.*
 import hydrozoa.rulebased.ledger.l1.utxo.{RuleBasedTreasuryOutput, RuleBasedTreasuryUtxo, VoteOutput, VoteUtxo}
 import monocle.*
 import scalus.cardano.ledger.{Utxo as _, *}
+import scalus.cardano.txbuilder.SomeBuildError
 import scalus.cardano.txbuilder.TransactionBuilder.ResolvedUtxos
 import scalus.cardano.txbuilder.TransactionBuilderStep.*
-import scalus.cardano.txbuilder.{SomeBuildError, TransactionBuilder}
 
 final case class TallyTx(
     continuingVoteUtxo: VoteUtxo[VoteStatus],

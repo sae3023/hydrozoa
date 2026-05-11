@@ -6,8 +6,6 @@ import scalus.cardano.ledger.*
 import scalus.cardano.node.*
 import scalus.uplc.builtin.Data
 
-import scala.concurrent.Future
-
 trait ContinuingTxTracker[F[_]]:
     def lastContinuingTxs(
         asset: (PolicyId, AssetName),

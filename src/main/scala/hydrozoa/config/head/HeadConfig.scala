@@ -4,7 +4,6 @@ import cats.*
 import cats.data.*
 import cats.data.Validated.{Invalid, Valid}
 import cats.effect.*
-import cats.syntax.all.*
 import hydrozoa.config
 import hydrozoa.config.ScriptReferenceUtxos
 import hydrozoa.config.ScriptReferenceUtxos.given_Decoder_Unresolved

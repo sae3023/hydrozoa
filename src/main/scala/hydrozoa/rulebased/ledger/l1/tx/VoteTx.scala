@@ -1,6 +1,5 @@
 package hydrozoa.rulebased.ledger.l1.tx
 
-import cats.implicits.*
 import hydrozoa.*
 import hydrozoa.config.ScriptReferenceUtxos
 import hydrozoa.config.head.multisig.fallback.FallbackContingency
@@ -30,8 +29,8 @@ import scalus.cardano.onchain.plutus.prelude.List as SList
 import scalus.cardano.txbuilder.SomeBuildError
 import scalus.cardano.txbuilder.TransactionBuilder.ResolvedUtxos
 import scalus.cardano.txbuilder.TransactionBuilderStep.*
+import scalus.uplc.builtin.ByteString
 import scalus.uplc.builtin.Data.fromData
-import scalus.uplc.builtin.{ByteString, Data}
 
 final case class VoteTx(
     voteUtxoSpent: VoteUtxo[VoteStatus.AwaitingVote],

@@ -17,7 +17,6 @@ import scalus.cardano.txbuilder.Datum.DatumInlined
 import scalus.cardano.txbuilder.ScriptSource.PlutusScriptAttached
 import scalus.cardano.txbuilder.ThreeArgumentPlutusScriptWitness
 import scalus.cardano.txbuilder.TransactionBuilderStep.{Mint, ReferenceOutput, Send, Spend}
-import scalus.uplc.builtin.Data
 import scalus.uplc.builtin.Data.{fromData, toData}
 
 final case class RuleBasedTreasuryUtxo(

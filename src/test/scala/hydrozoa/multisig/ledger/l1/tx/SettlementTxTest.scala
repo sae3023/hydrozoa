@@ -1,6 +1,5 @@
 package hydrozoa.multisig.ledger.l1.tx
 
-import cats.*
 import cats.data.*
 import hydrozoa.config.head.HeadConfig
 import hydrozoa.config.head.multisig.timing.TxTiming

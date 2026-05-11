@@ -4,7 +4,6 @@ import cats.*
 import cats.data.*
 import cats.effect.*
 import cats.effect.unsafe.IORuntime
-import cats.effect.unsafe.implicits.*
 import cats.syntax.all.*
 import org.scalacheck.PropertyM.{monadForPropM, monadicIO}
 import org.scalacheck.{Gen, Prop, PropertyM}

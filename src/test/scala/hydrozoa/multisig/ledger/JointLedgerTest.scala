@@ -21,7 +21,6 @@ import hydrozoa.multisig.consensus.BlockWeaver.LocalFinalizationTrigger
 import hydrozoa.multisig.consensus.peer.HeadPeerNumber
 import hydrozoa.multisig.consensus.pollresults.PollResults
 import hydrozoa.multisig.consensus.{ConsensusActor, RequestValidityEndTimeRaw, RequestValidityStartTimeRaw, UserRequest, UserRequestBody, UserRequestHeader, UserRequestWithId}
-import hydrozoa.multisig.ledger.JointLedgerTestHelpers.*
 import hydrozoa.multisig.ledger.JointLedgerTestHelpers.Requests.*
 import hydrozoa.multisig.ledger.JointLedgerTestHelpers.Scenarios.*
 import hydrozoa.multisig.ledger.block.{Block, BlockBrief, BlockNumber}
@@ -37,7 +36,6 @@ import hydrozoa.multisig.ledger.l1.deposits.map.DepositsMap
 import hydrozoa.multisig.ledger.l1.txseq.DepositRefundTxSeq
 import hydrozoa.rulebased.ledger.l1.script.plutus.RuleBasedTreasuryValidator.evacuationKeyToData
 import java.util.concurrent.TimeUnit
-import monocle.Focus
 import monocle.Focus.focus
 import org.scalacheck.*
 import org.scalacheck.Prop.propBoolean
